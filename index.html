@@ -444,6 +444,9 @@
   <div class="logo">
     DORAMAX
   </div>
+  <div class="search-box">
+  <input type="text" id="searchInput" placeholder="Pesquisar conteúdo...">
+  </div>
 
   <div class="menu-wrapper">
 
@@ -469,10 +472,6 @@
 
   </div>
 
-</div>
-
-<div class="search-box">
-  <input type="text" id="searchInput" placeholder="Pesquisar conteúdo...">
 </div>
 
 <section class="hero">
@@ -686,6 +685,11 @@
         const title = card.querySelector('.card-title')
           .textContent
           .toLowerCase();
+        if(e.key === 'Enter') {
+
+          this.blur();
+
+        }
 
         if(title.includes(value)) {
           card.style.display = 'block';
