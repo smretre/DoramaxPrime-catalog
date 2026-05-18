@@ -685,11 +685,6 @@
         const title = card.querySelector('.card-title')
           .textContent
           .toLowerCase();
-        if(e.key === 'Enter') {
-
-          this.blur();
-
-        }
 
         if(title.includes(value)) {
           card.style.display = 'block';
@@ -697,6 +692,15 @@
           card.style.display = 'none';
         }
       });
+
+    });
+    searchInput.addEventListener('keydown', function(e) {
+
+      if(e.key === 'Enter') {
+
+        this.blur();
+
+      }
 
     });
 
