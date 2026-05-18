@@ -46,7 +46,13 @@
       gap: 15px;
       flex-wrap: wrap;
     }
+    .menu-wrapper {
+
+      position: relative;
+    }
+
     .top-menu-btn {
+
       width: 60px;
       height: 60px;
 
@@ -58,7 +64,6 @@
       color: white;
 
       font-size: 28px;
-      font-weight: bold;
 
       cursor: pointer;
 
@@ -67,13 +72,48 @@
       justify-content: center;
 
       box-shadow: 0 10px 25px rgba(36,124,255,0.25);
-
-      transition: 0.25s ease;
     }
 
-    .top-menu-btn:hover {
+    .menu-dropdown {
 
-      transform: scale(1.05);
+      position: absolute;
+
+      top: 75px;
+      right: 0;
+
+      width: 240px;
+
+      background: #111c3b;
+
+      border-radius: 20px;
+
+      overflow: hidden;
+
+      display: none;
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      z-index: 9999;
+
+      backdrop-filter: blur(20px);
+    }
+
+    .menu-dropdown a {
+
+      display: block;
+
+      padding: 16px 20px;
+
+      color: white;
+
+      text-decoration: none;
+
+      transition: 0.2s;
+    }
+
+    .menu-dropdown a:hover {
+
+      background: rgba(255,255,255,0.05);
 
     }
 
@@ -399,14 +439,35 @@
     }
   </style></head>
 <body>  <div class="container"><div class="topbar">
-  <div class="logo">DORAMAX</div>
-  <button class="top-menu-btn" onclick="toggleMenu()">
-    ☰
-  </button>
 
-  <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Pesquisar conteúdo...">
+  <div class="logo">
+    DORAMAX
   </div>
+
+  <div class="menu-wrapper">
+
+    <button class="top-menu-btn" onclick="toggleMenu()">
+      ☰
+    </button>
+
+    <div class="menu-dropdown" id="menuDropdown">
+
+      <a href="https://t.me/SEUGRUPO" target="_blank">
+        👥 Entrar no Grupo
+      </a>
+
+      <a href="https://t.me/SEUCANAL" target="_blank">
+        📢 Canal VIP
+      </a>
+
+      <a href="#catalogo">
+        🎬 Catálogo
+      </a>
+
+    </div>
+
+  </div>
+
 </div>
 
 <section class="hero">
