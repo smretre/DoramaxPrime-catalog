@@ -347,12 +347,30 @@
       color: white;
       font-size: 15px;
       font-weight: 700;
-      background: linear-gradient(90deg, var(--red), var(--red));
-      transition: 0.25s ease;
       text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: center;
+
+      background: linear-gradient(
+        90deg,
+        var(--red),
+        #ff5a7a,
+        var(--red)
+      );
+      background-size: 200% 100%;
+      animation: moveGradient 3s linear infinite;
+
+      transition: 0.25s ease;
+    }
+
+    @keyframes moveGradient {
+      from {
+        background-position: 0% 0;
+      }
+      to {
+        background-position: 200% 0;
+      }
     }
 
     .buy-btn:hover {
