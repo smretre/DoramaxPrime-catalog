@@ -372,17 +372,18 @@
       background: linear-gradient(
         90deg,
         transparent,
-        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 0.3),
         transparent
       );
 
       transform: skewX(-25deg);
       animation: shine 3.5s linear infinite;
+      will-change: transform;
     }
 
     @keyframes shine {
-      100% {
-        left: 200%;
+      to {
+        transform: translateX(350%) skewX(-25deg);
       }
     }
 
