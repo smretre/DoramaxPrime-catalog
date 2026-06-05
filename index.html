@@ -364,12 +364,28 @@
       transition: 0.25s ease;
     }
 
-    @keyframes moveGradient {
-      from {
-        background-position: 0% 0;
-      }
-      to {
-        background-position: 200% 0;
+    .buy-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 60%;
+      height: 100%;
+
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.6),
+        transparent
+      );
+
+      transform: skewX(-25deg);
+      animation: shine 1.5s linear infinite;
+    }
+
+    @keyframes shine {
+      100% {
+        left: 200%;
       }
     }
 
