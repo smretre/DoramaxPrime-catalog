@@ -740,10 +740,10 @@
     function renderBanner(data) {
 
        const wrapper = document.getElementById("bannerWrapper");
-       const encodedMessage = encodeURIComponent(item.mensagem || `Olá, quero comprar ${item.titulo}`);
-
+      
        wrapper.innerHTML = data.slice(0, 10).map(item => `
          <div class="swiper-slide">
+         
 
            <div class="banner-card">
 
@@ -773,6 +773,9 @@
 
          </div>
        `).join('');
+      
+      const encodedMessage = encodeURIComponent(item.mensagem || `Olá, quero comprar ${item.titulo}`);
+      
     }
     function renderCatalog(data) {
 
