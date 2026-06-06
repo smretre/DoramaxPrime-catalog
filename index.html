@@ -13,7 +13,8 @@
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "x2gh06xj9i");
-</script> <style>
+</script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"> <style>
     * {
       margin: 0;
       padding: 0;
@@ -511,65 +512,67 @@
         height: 45px;
         font-size: 13px;
       }
-      .featured-slider {
-        display: flex;
-        overflow-x: auto;
-        gap: 15px;
-        margin: 25px 0;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
+      .destaqueSwiper {
+        width: 100%;
+        padding: 20px 0 40px;
+        margin-bottom: 30px;
       }
 
-      .featured-slider::-webkit-scrollbar {
-        display: none;
-      }
-
-      .featured-card {
-        min-width: 280px;
+      .destaqueSwiper .swiper-slide {
+        width: 260px;
         height: 420px;
-        position: relative;
         border-radius: 24px;
         overflow: hidden;
-        scroll-snap-align: center;
-        flex-shrink: 0;
       }
 
-      .featured-card img {
+      .banner-card {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .banner-card img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
 
-      .featured-card::after {
+      .banner-card::after {
         content: "";
         position: absolute;
         inset: 0;
         background: linear-gradient(
           to top,
           rgba(0,0,0,.95),
-          rgba(0,0,0,.4),
+          rgba(0,0,0,.3),
           transparent
         );
       }
 
-      .featured-info {
+      .banner-info {
         position: absolute;
         bottom: 20px;
-        left: 20px;
-        right: 20px;
-        z-index: 2;
+        left: 15px;
+        right: 15px;
+        z-index: 5;
+        text-align: center;
       }
 
-      .featured-title {
-        font-size: 22px;
-        font-weight: 800;
-        margin-bottom: 10px;
+      .banner-title {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 8px;
       }
 
-      .featured-price {
+      .banner-price {
+        margin-bottom: 12px;
         font-size: 20px;
-        margin-bottom: 15px;
+        font-weight: 800;
       }
+
+      .swiper-pagination-bullet {
+        background: white;
+        }
     }
   </style></head>
 <body>  <div class="container"><div class="topbar">
@@ -641,6 +644,10 @@
   <div class="category"><i class="fa-solid fa-tv"></i> Séries</div>
   <div class="category"><i class="fa-solid fa-clapperboard"></i> Filmes</div>
 </div>
+  <div class="swiper destaqueSwiper">
+  <div class="swiper-wrapper" id="bannerWrapper"></div>
+  <div class="swiper-pagination"></div>
+  </div>
 
 <h2 class="section-title" id="catalogo">Lançamentos</h2>
 
@@ -720,26 +727,41 @@
        }
 
     }
-    function renderFeatured(data) {
+    function renderBanner(data) {
 
-       const slider = document.getElementById("featuredSlider");
+       const wrapper = document.getElementById("bannerWrapper");
 
-       slider.innerHTML = data.slice(0, 8).map(item => `
-         <div class="featured-card">
-           <img src="${item.imagem}" alt="${item.titulo}">
+       wrapper.innerHTML = data.slice(0, 10).map(item => `
+         <div class="swiper-slide">
 
-         <div class="featured-info">
-         <div class="featured-title">${item.titulo}</div>
-         <div class="featured-price">R$ ${item.preco}</div>
+           <div class="banner-card">
 
-           <a class="buy-btn"
-              href="https://t.me/${TELEGRAM}"
-              target="_blank">
-              Comprar
-           </a>
+             <img src="${item.imagem}" alt="${item.titulo}">
+
+             <div class="banner-info">
+
+               <div class="banner-title">
+                 ${item.titulo}
+               </div>
+
+               <div class="banner-price">
+                 R$ ${item.preco}
+               </div>
+
+               <a
+                 class="buy-btn"
+                 target="_blank"
+                 href="https://t.me/${TELEGRAM}"
+               >
+                 Comprar
+               </a>
+
+             </div>
+
+           </div>
+
          </div>
-       </div>
-     `).join("");
+       `).join('');
     }
     function renderCatalog(data) {
 
@@ -816,7 +838,43 @@
           return obj;
 
         });
-        renderFeatured(data);
+        renderBanner(data);
+        setTimeout(() => {
+
+  new Swiper(".destaqueSwiper", {
+
+    effect: "coverflow",
+
+    grabCursor: true,
+
+    centeredSlides: true,
+
+    loop: true,
+
+    slidesPerView: 1.4,
+
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false
+    },
+
+    coverflowEffect: {
+      rotate: 0,
+      stretch: 0,
+      depth: 120,
+      modifier: 2,
+      scale: 0.85
+    },
+
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    }
+
+  });
+
+}, 500);
+        
         renderCatalog(data);
 
       } catch(error) {
@@ -873,5 +931,7 @@
 
     loadCatalog();
 
-  </script></body>
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
 </html>
