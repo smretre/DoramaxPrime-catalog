@@ -628,6 +628,10 @@
   <i class="fa-solid fa-magnifying-glass search-icon"></i>
   <input type="text" id="searchInput" placeholder="Pesquisar conteúdo...">
 </div>
+  <p id="nada-encontrado" style="display:none;">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    Nenhum resultado encontrado.
+  </p>
   <div class="swiper destaqueSwiper">
   <div class="swiper-wrapper" id="bannerWrapper"></div>
   <div class="swiper-pagination"></div>
@@ -928,8 +932,25 @@
           card.style.display = 'none';
         }
       });
+      const mensagem = document.getElementById('nada-encontrado');
 
+function pesquisar() {
+    const termo = searchInput.value.toLowerCase();
+    const cards = document.querySelectorAll('.card');
+
+    let encontrou = false;
+
+    cards.forEach(card => {
+        const texto = card.textContent.toLowerCase();
+
+        if (texto.includes(termo)) {
+            card.style.display = 'block';
+            encontrou = true;
+        } else {
+            card.style.display = 'none';
+        }
     });
+  
     searchInput.addEventListener('keydown', function(e) {
 
       if(e.key === 'Enter') {
