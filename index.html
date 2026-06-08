@@ -933,6 +933,11 @@
     searchInput.addEventListener('keydown', function(e) {
 
       if(e.key === 'Enter') {
+        e.preventDefault();
+
+        document.getElementById('catalogo').scrollIntoView({
+            behavior: 'smooth'
+        });
 
         this.blur();
 
