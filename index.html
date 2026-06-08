@@ -935,7 +935,8 @@
       if(e.key === 'Enter') {
         e.preventDefault();
 
-        document.getElementById('catalogo').scrollIntoView({
+        window.scrollTo({
+            top: document.body.scrollHeight,
             behavior: 'smooth'
         });
 
