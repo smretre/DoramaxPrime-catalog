@@ -525,9 +525,8 @@
         font-size: 13px;
       }
       .destaqueSwiper {
-        width: 100%;
-        padding: 20px 0 40px;
-        margin-bottom: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
       }
 
       .destaqueSwiper .swiper-slide {
@@ -873,6 +872,18 @@
     loop: true,
 
     slidesPerView: 1.4,
+
+    breakpoints: {
+    768: {
+      slidesPerView: 2.5
+    },
+    1024: {
+      slidesPerView: 3.5
+    },
+    1400: {
+      slidesPerView: 4.5
+    }
+  },
 
     autoplay: {
       delay: 3000,
