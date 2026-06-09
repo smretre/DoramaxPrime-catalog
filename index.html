@@ -944,26 +944,9 @@
         });
 
         this.blur();
-
-    const mensagem = document.getElementById('nada-encontrado');
-
-    function pesquisar() {
-    const termo = searchInput.value.toLowerCase();
-    const cards = document.querySelectorAll('.card');
-
-    let encontrou = false;
-
-    cards.forEach(card => {
-        const texto = card.textContent.toLowerCase();
-
-        if (texto.includes(termo)) {
-            card.style.display = 'block';
-            encontrou = true;
-        } else {
-            card.style.display = 'none';
-        }
+       }
+    
     });
-  }
 
     // ==========================================
     // INICIAR
