@@ -934,8 +934,11 @@
       if(e.key === 'Enter') {
         e.preventDefault();
 
+        const catalogo = document.getElementById('catalogo');
+        const posicao = catalogo.offsetTop + 200; // ajuste o valor
+
         window.scrollTo({
-            top: document.body.scrollHeight,
+            top: posicao,
             behavior: 'smooth'
         });
 
