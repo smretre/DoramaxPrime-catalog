@@ -627,7 +627,12 @@
 <div class="search-box">
   <i class="fa-solid fa-magnifying-glass search-icon"></i>
   <input type="text" id="searchInput" placeholder="Pesquisar conteúdo...">
+  <p id="nada-encontrado" style="display:none;">
+   <i class="fa-solid fa-magnifying-glass search-icon"></i> 
+     Nenhum resultado encontrado.
+  </p>
 </div>
+  
   <div class="swiper destaqueSwiper">
   <div class="swiper-wrapper" id="bannerWrapper"></div>
   <div class="swiper-pagination"></div>
@@ -944,10 +949,34 @@
             top: posicao,
             behavior: 'smooth'
         });
+      const mensagem = document.getElementById('nada-encontrado');
+
+function pesquisar() {
+    const termo = searchInput.value.toLowerCase();
+    const cards = document.querySelectorAll('.card');
+
+    let encontrou = false;
+
+    cards.forEach(card => {
+        if (card.textContent.toLowerCase().includes(termo)) {
+            card.style.display = '';
+            encontrou = true;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    mensagem.style.display = encontrou ? 'none' : 'block';
+     }
 
         this.blur();
     }
 
+});
+    searchInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        pesquisar();
+    }
 });
 
     // ==========================================
