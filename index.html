@@ -931,11 +931,12 @@
       
      searchInput.addEventListener('keydown', function(e) {
 
-      if(e.key === 'Enter') {
+    if (e.key === 'Enter') {
+
         e.preventDefault();
 
         const catalogo = document.getElementById('catalogo');
-        const posicao = catalogo.offsetTop + 200; // ajuste o valor
+        const posicao = catalogo.offsetTop + 200;
 
         window.scrollTo({
             top: posicao,
@@ -943,8 +944,9 @@
         });
 
         this.blur();
-     });
     }
+
+});
 
     // ==========================================
     // INICIAR
