@@ -843,7 +843,7 @@
         const encodedMessage = encodeURIComponent(item.mensagem || `Olá, quero comprar ${item.titulo}`);
 
         const card = `
-          <div class="card">
+          <div class="card" data-categoria="${item.categoria?.toLowerCase() || 'todos'}">
 
             <div class="badge">VIP</div>
 
