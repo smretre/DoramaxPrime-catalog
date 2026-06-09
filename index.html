@@ -797,7 +797,7 @@
 
        const wrapper = document.getElementById("bannerWrapper");
       
-       wrapper.innerHTML = data.slice(0, 10).map(item => {
+       wrapper.innerHTML = data.slice(0, 16).map(item => {
          const encodedMessage = encodeURIComponent(item.mensagem || `Olá, quero comprar ${item.titulo}`);
          
          return`
